@@ -1,48 +1,65 @@
 import math
 import time
+import multiprocessing as mp
 
-def IsPrime(num):
-        # Compute the list of all permutations of l
-        # Python program to check if 
-        # given number is prime or not 
-        # If given number is greater than 1 
-        if num > 1: 
-	
-        # Iterate from 2 to n / 2 
-                for i in range(2, num//2): 
-		
-	# If num is divisible by any number between 
-	# 2 and n / 2, it is not prime 
-	                if (num % i) == 0: 
-	                        return False
-                else: 
-                        return True 
 
-        else: 
-                return False
+def returnObject(sortedNumbers, duration, method):
+    return {
+    "SortedNumbers": sortedNumbers,
+    "Duration": duration,
+    "Method": method
+   
+    }
+
+def IsPrime(n):
+        if n == 2 or n == 3: return True
+        if n < 2 or n%2 == 0: return False
+        if n < 9: return True
+        if n%3 == 0: return False
+        r = int(n**0.5)
+        f = 5
+        while f <= r:
+                
+                if n%f == 0: return False
+                if n%(f+2) == 0: return False
+                f +=6
+        return True
 
 
 def SequentialPrimeNumbers(num1, num2):
         startTime = time.time()
-        
-        primes = 0
+        Array = []
         for i in range(num1, num2, 1):
                 if IsPrime(i):
-                        primes += 1
+                        Array.append(i)
                 
         elapsedTime =   time.time() - startTime
-        print(elapsedTime)
-        return primes
+        return returnObject(Array, elapsedTime, "Sequential")
+
+
+def TaskPrime(num1, num2):        
+        Array = []
+        for i in range(num1, num2, 1):
+                if IsPrime(i):
+                        Array.append(i)
+                        
+                
+        return Array
+
+
 
 def ParallelPrimeNumbers(num1, num2):
         startTime = time.time()
+       
+        pool = mp.Pool(mp.cpu_count())
+        results = pool.apply(TaskPrime,[int(num1),int(num2)])
+       
+        pool.close()
+        elapsedTime = time.time() - startTime
         
-        primes = 0
-        for i in range(num1, num2, 1):
-                if IsPrime(i):
-                        primes += 1
-                
-        elapsedTime =   time.time() - startTime
-        print(elapsedTime)
-        return primes
+        return returnObject(results, elapsedTime, "Parallel")
+
+
+
+
 
