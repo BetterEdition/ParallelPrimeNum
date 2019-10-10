@@ -1,35 +1,48 @@
 import math
 import time
 
-input1 = 1
-input2 = 100000
-
 def IsPrime(num):
-        primeValid = True
-        if num <= 1:
-                primeValid = False
+        # Compute the list of all permutations of l
+        # Python program to check if 
+        # given number is prime or not 
+        # If given number is greater than 1 
+        if num > 1: 
+	
+        # Iterate from 2 to n / 2 
+                for i in range(2, num//2): 
+		
+	# If num is divisible by any number between 
+	# 2 and n / 2, it is not prime 
+	                if (num % i) == 0: 
+	                        return False
+                else: 
+                        return True 
 
-        if num == 2:
-                primeValid = True
+        else: 
+                return False
 
-        elif num % 2 == 0:
-                primeValid = False
-        
-        i = 3
-        
-        for i in range(i, int(math.floor(math.sqrt(num))), 2):
-                        if num % i == 0:
-                                primeValid = False
-                                break
-                        
-        return primeValid
 
 def SequentialPrimeNumbers(num1, num2):
-        now = time.time
-        primes = 0
-        i = 0
-        for i in range(num1, i <= num2, 1):
-                if IsPrime(i):
-                        primes + 1
+        startTime = time.time()
         
+        primes = 0
+        for i in range(num1, num2, 1):
+                if IsPrime(i):
+                        primes += 1
+                
+        elapsedTime =   time.time() - startTime
+        print(elapsedTime)
         return primes
+
+def ParallelPrimeNumbers(num1, num2):
+        startTime = time.time()
+        
+        primes = 0
+        for i in range(num1, num2, 1):
+                if IsPrime(i):
+                        primes += 1
+                
+        elapsedTime =   time.time() - startTime
+        print(elapsedTime)
+        return primes
+
