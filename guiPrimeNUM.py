@@ -1,5 +1,6 @@
 import PrimeNumGenerator
 from tkinter import *
+from multiprocessing import freeze_support
 
 
 #"SortedNumbers": sortedNumbers,
@@ -10,6 +11,7 @@ from tkinter import *
 window = Tk()
 def sequentialPrimeNumbers(firstNumber, secondNumber):
     global window
+    freeze_support()
     primeNumbers = PrimeNumGenerator.SequentialPrimeNumbers(int(firstNumber), int(secondNumber))
     
     t = Text(window)
@@ -66,5 +68,6 @@ def CreateUI():
 
 
 if __name__ == '__main__':
+    freeze_support()
     CreateUI()
 

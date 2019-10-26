@@ -12,6 +12,7 @@ def returnObject(sortedNumbers, duration, method):
     }
 
 
+
 def IsPrime(n):
     if n == 2 or n == 3:
         return True
@@ -72,21 +73,18 @@ def TaskPrime(num1, num2):
 
     return Array
 
-
+ 
 
 def ParallelPrimeNumbers(num1, num2):
     startTime = time.time()
-    m = []
-
-    for i in range(num1,num2):
-        m.append(i)
-   
-
-   
+    
     p = Pool()
-    results = p.map(Prime, m)
+    results = p.map(Prime, range(num1, num2))
     results = list(filter(None.__ne__, results))
+    
     p.close()
+    p.join()
     elapsedTime = time.time() - startTime
 
     return returnObject(results, elapsedTime, "Parallel")
+
