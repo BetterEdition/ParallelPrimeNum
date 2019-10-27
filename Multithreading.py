@@ -4,17 +4,24 @@ import random
 import multiprocessing
 
 
-def Task(id, timeToSleep):
-	
+def Task(id, timeToSleep, Token):
 	print("Task " + str(id) + " is beginning")
-	time.sleep(timeToSleep)
-	print("Task " + str(id) + " has completed")
+	if(timeToSleep > 5):
+		Token.value = False
+	
+	if(Token.value):
+		time.sleep(timeToSleep)
+		print("Task " + str(id) + " has completed")
+	else:
+		print("The timeToSleep is too time consuming, cancelling task")
+		
+		
+	
 
-
-def assignTaskToProcess(nrOfTasks, timeToSleep):
+def assignTaskToProcess(nrOfTasks, timeToSleep, Token):
     jobs = []
     for i in range(0, nrOfTasks):
-        process = multiprocessing.Process(target=Task,args=(i+1, timeToSleep,))
+        process = multiprocessing.Process(target=Task,args=(i+1, timeToSleep, Token))
         jobs.append(process)
 
     return jobs
@@ -27,20 +34,22 @@ if __name__ == "__main__":
 	# the job list 
 
 	# Arguments: Number of tasks to be created, SleepTimer
-	firstTask = assignTaskToProcess(1, 3)
+	Token = multiprocessing.Value('b', True)
+	firstTask = assignTaskToProcess(1, 6, Token)
 	
-	
-	# Start the processes 	
+	# Start the processes
 	for t in firstTask:
 		t.start()
 		t.join()
 	
-	nextTasks = assignTaskToProcess(2, 3)
-	for t in nextTasks:
-		t.start()
+	while Token.value:
+		nextTasks = assignTaskToProcess(2, 3, Token)
+		for t in nextTasks:
+			t.start()
 	
-	for t in nextTasks:
-		t.join()
+		for t in nextTasks:
+			t.join()
+		break
 
 
 	
