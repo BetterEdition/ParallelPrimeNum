@@ -1,0 +1,11 @@
+C:\Users\Jesper\source\repos\Parallel\Parallel\bin\Debug\netcoreapp2.2\Parallel.deps.json
+C:\Users\Jesper\source\repos\Parallel\Parallel\bin\Debug\netcoreapp2.2\Parallel.runtimeconfig.json
+C:\Users\Jesper\source\repos\Parallel\Parallel\bin\Debug\netcoreapp2.2\Parallel.runtimeconfig.dev.json
+C:\Users\Jesper\source\repos\Parallel\Parallel\bin\Debug\netcoreapp2.2\Parallel.dll
+C:\Users\Jesper\source\repos\Parallel\Parallel\bin\Debug\netcoreapp2.2\Parallel.pdb
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.csprojAssemblyReference.cache
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.csproj.CoreCompileInputs.cache
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.AssemblyInfoInputs.cache
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.AssemblyInfo.cs
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.dll
+C:\Users\Jesper\source\repos\Parallel\Parallel\obj\Debug\netcoreapp2.2\Parallel.pdb
